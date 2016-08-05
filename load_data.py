@@ -33,24 +33,47 @@ class DataManage():
         for i in range(1,790):
             self.X_norm[i,:] = (self.X_log[i,:]-X_mean)/X_std
 
-        print self.X_norm
+        #print self.X_norm
 
-    def display(self):
+    def display(self,matrix):
         plt.figure(1)
         plt.hold(True)
 
-        plt.imshow(self.X_norm)
+        plt.imshow(matrix)
 
         plt.show()
+
+    def analysis(self):
+
+        tmp_std =  np.nanstd(self.X,1)
+
+        tmp_avg = np.nanmean(self.X,1)
+
+        print tmp_std.shape
+
+        print tmp_std/tmp_avg
+
+
+
+        self.cov = np.cov(self.X_norm,rowvar=True)
+
+        #self.display(self.cov)
+
+        print self.cov.shape
+        w,v = np.linalg.eig(np.mat(self.cov))
+
+
+        print w
+
 
 
 
 if __name__ == '__main__':
     dm = DataManage()
 
-
-
     dm.normalized()
 
-    dm.display()
+    #dm.display()
+
+    dm.analysis()
 
