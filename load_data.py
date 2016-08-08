@@ -16,22 +16,22 @@ class DataManage():
 
 
     def normalized(self):
-        self.X_log = np.zeros(self.X.shape)
-        np.log(self.X,self.X_log)
+        #self.X_log = np.zeros(self.X.shape)
+        #np.log(self.X,self.X_log)
         #self.X_log = self.X
 
         self.X_norm = np.zeros(self.X.shape)
 
        # print self.X_log
 
-        X_mean =  np.nanmean(self.X_log,0)
+        X_mean =  np.nanmean(self.X,0)
 
-        X_std = np.nanstd(self.X_log,0)
+        X_std = np.nanstd(self.X,0)
 
 
 
         for i in range(1,790):
-            self.X_norm[i,:] = (self.X_log[i,:]-X_mean)/X_std
+            self.X_norm[i,:] = (self.X[i,:]-X_mean)/X_std
 
         #print self.X_norm
 
