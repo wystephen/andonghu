@@ -63,6 +63,8 @@ class DataManage():
         w,v = np.linalg.eig(np.mat(self.cov))
 
 
+
+
         print w
 
 
